@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
+using PPAI_IVR.Models.Clases;
 
 namespace PPAI_IVR.Clases
 {
