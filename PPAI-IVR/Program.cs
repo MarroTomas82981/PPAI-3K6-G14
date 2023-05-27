@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using PPAI_IVR;
-using PPAI_IVR.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var politicaUsuariosAutenticados = new AuthorizationPolicyBuilder().
-    RequireAuthenticatedUser().Build();
+var politicaUsuariosAutenticados = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews(opciones =>
@@ -17,21 +18,20 @@ builder.Services.AddControllersWithViews(opciones =>
     opciones.Filters.Add(new AuthorizeFilter(politicaUsuariosAutenticados));
 });
 
-builder.Services.AddDbContext<ApplicationDbContext>(opciones => 
-                opciones.UseSqlServer("name=DefaultConnection"));
+builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
+    opciones.UseSqlServer("name=DefaultConnection"));
 
 builder.Services.AddAuthentication();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(opciones =>
-opciones.SignIn.RequireConfirmedAccount= false).
+opciones.SignIn.RequireConfirmedAccount = false).
 AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
-builder.Services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme, 
+builder.Services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme,
     opciones =>
     {
-        opciones.LogoutPath = "/usuarios/login";
+        opciones.LoginPath = "/usuarios/login";
         opciones.AccessDeniedPath = "/usuarios/login";
-
     });
 
 var app = builder.Build();

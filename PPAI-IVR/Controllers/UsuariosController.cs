@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using PPAI_IVR.Models;
 using PPAI_IVR;
 using System.Security.Claims;
-using PPAI_IVR.Models;
+using PPAI_IVR.Clases;
 
 
 namespace TareasMVC.Controllers

@@ -1,4 +1,4 @@
-﻿namespace PPAI_IVR.Clases
+﻿namespace PPAI_IVR.Models.Clases
 {
     public class SubOpcionLlamada
     {
@@ -10,7 +10,7 @@
 
         public string getNombre()
         {
-            return this.nombre;
+            return nombre;
         }
 
         public bool esNro()

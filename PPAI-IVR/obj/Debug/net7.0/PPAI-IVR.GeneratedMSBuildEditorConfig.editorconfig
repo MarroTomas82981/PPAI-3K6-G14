@@ -16,12 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\tomas\Downloads\DSI\2023\PPAI\c#\PPAI-IVR\PPAI-IVR
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/tomas/Downloads/DSI/2023/PPAI/c\#/PPAI-IVR/PPAI-IVR/Views/Clientes/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcQ3JlYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tomas/Downloads/DSI/2023/PPAI/c\#/PPAI-IVR/PPAI-IVR/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tomas/Downloads/DSI/2023/PPAI/c\#/PPAI-IVR/PPAI-IVR/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tomas/Downloads/DSI/2023/PPAI/c\#/PPAI-IVR/PPAI-IVR/Views/Llamadas/ComunicarseConOperador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGxhbWFkYXNcQ29tdW5pY2Fyc2VDb25PcGVyYWRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tomas/Downloads/DSI/2023/PPAI/c\#/PPAI-IVR/PPAI-IVR/Views/Shared/Error.cshtml]

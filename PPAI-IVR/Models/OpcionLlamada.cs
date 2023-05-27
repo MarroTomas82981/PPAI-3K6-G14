@@ -1,4 +1,6 @@
-﻿namespace PPAI_IVR.Clases
+﻿using PPAI_IVR.Models.Clases;
+
+namespace PPAI_IVR.Clases
 {
     public class OpcionLlamada
     {

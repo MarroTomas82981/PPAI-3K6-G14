@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PPAI_IVR.Clases;
+using PPAI_IVR.Models.Clases;
 
 namespace PPAI_IVR
 {
