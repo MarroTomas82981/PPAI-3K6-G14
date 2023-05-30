@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\PPAI-IVR.csproj": {}
+    "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\PPAI-IVR.csproj": {
+    "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\PPAI-IVR.csproj",
+        "projectUniqueName": "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj",
         "projectName": "PPAI-IVR",
-        "projectPath": "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\PPAI-IVR.csproj",
-        "packagesPath": "C:\\Users\\tomas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\obj\\",
+        "projectPath": "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj",
+        "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tomas\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

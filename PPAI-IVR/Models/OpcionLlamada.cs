@@ -10,7 +10,7 @@ namespace PPAI_IVR.Clases
         public string mensajeSubOpcion { get; set; }
         public string audioMensajeSubOpciones { get; set; }
         public List<Validacion> validacionesRequeridas { get; set; }
-        public List<SubOpcionLlamada> subOpcionLlamadas { get; set; }
+        public List<SubOpcionLlamada> subOpcionesLlamada { get; set; }
         public int CategoriaLlamadaId { get; set; }
         public int LlamadaId { get; set; }
 
@@ -25,7 +25,7 @@ namespace PPAI_IVR.Clases
             var list = new List<string>();
             for (int i = 0; i < validacionesRequeridas.Count; i++)
             {
-                list.Add(subOpcionLlamadas[i].nombre);
+                list.Add(subOpcionesLlamada[i].nombre);
             }
             return list;
         }

@@ -8,6 +8,8 @@ namespace PPAI_IVR.Models
         public DateTime FechaHoraActual { get; set; }
         public Llamada LlamadaEnCurso { get; set; }
         public Estado EstadoEnCurso { get; set; }
+        public CategoriaLlamada CategoriaSeleccionada { get; set; }
+
 
 
 
@@ -32,17 +34,23 @@ namespace PPAI_IVR.Models
             LlamadaEnCurso.EsTomadaPorOperador(EstadoEnCurso, FechaHoraActual);
         }
 
-        public void buscarDatosLlamadaActual()
+        public string buscarDatosLlamadaActual()
         {
             var nombreClienteLlamada = LlamadaEnCurso.obtenerNombreClienteLlamada();
-            List<string> descripciones = LlamadaEnCurso.CategoriaLlamada.obtenerDescripcionCategoriaYOpcion();
+            /*List<string> descripciones = LlamadaEnCurso.CategoriaLlamada.obtenerDescripcionCategoriaYOpcion();
             List<string> validaciones = LlamadaEnCurso.CategoriaLlamada.obtenerValidaciones();
-
+            */
+            return nombreClienteLlamada.ToString();
         }
 
         public void tomarOpcionDeValidacion()
         {
             LlamadaEnCurso.validarInformacionCliente();
+        }
+
+        public GestorRegRespuestaOperador()
+        {
+            
         }
 
     }

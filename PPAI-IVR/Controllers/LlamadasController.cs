@@ -15,7 +15,15 @@ namespace PPAI_IVR.Controllers
             return View();
         }
 
+        public async Task<IActionResult> ComunicarseConOperador()
+        {
+            return View();
+        }
 
+        public async Task<IActionResult> MostrarDatosLlamadaActual()
+        {
+            return View();
+        }
 
     }
 }
