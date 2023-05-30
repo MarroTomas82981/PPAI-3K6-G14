@@ -1,0 +1,49 @@
+﻿@using PPAI_IVR.Models.Clases;
+@model IEnumerable<Cliente>
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+
+<h1>Clientes</h1>
+
+
+<div class="center"><a asp-action="Crear" class="btn btn-primary mb-3">Crear nuevo</a></div>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Acciones</th>
+            <th>Nombre</th>
+            <th>DNI</th>
+            <th>Numero de Celular</th>
+        </tr>
+    </thead>
+    <tbody id="reordenable">
+        @foreach (var clientes in Model)
+        {
+            <tr>
+                <td>
+                    <input type="hidden" value="@clientes.Id" class="ids" />
+                    <a class="btn btn-primary" asp-action="Editar" asp-route-id="@clientes.Id">Editar</a>
+                    <a class=" btn btn-danger" asp-action="Borrar" asp-route-id="@clientes.Id">Borrar</a>
+                </td>
+                <td>
+                    @clientes.NombreCompleto
+                </td> 
+                <td>
+                    @clientes.Dni
+                </td> 
+                <td>
+                    @clientes.nroCelular
+                </td>
+                
+
+            </tr>
+        }
+    </tbody>
+
+
+</table>

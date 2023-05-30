@@ -31,12 +31,12 @@ namespace PPAI_IVR.Clases
         }
         public List<string> getValidacion()
         {
-            var list = new List<string>();
+            var audioMensajes = new List<string>();
             for (int i = 0; i < validacionesRequeridas.Count; i++)
             {
-                list.Add(validacionesRequeridas[i].getAudioMensajeValidacion());
+                audioMensajes.Add(validacionesRequeridas[i].getAudioMensajeValidacion());
             }
-            return list;
+            return audioMensajes;
         }
      }
 

@@ -7,6 +7,7 @@
         public string mensajeOpciones {get; set; }
         public string nombre {get; set; }
         public int nroOrden { get; set; }
+        public OpcionLlamada OpcionLlamada { get; set; }
 
 
 
@@ -14,13 +15,22 @@
         {
             return audioMensajeOpciones;
         }
-        public Task obtenerDescripcionCategoriaYOpcion()
+        public List<string> obtenerDescripcionCategoriaYOpcion()
         {
-            return Task.FromResult(0);
+            var nombre = getNombre();
+            var descripcion = OpcionLlamada.getDescripcioneConSubOpcion();
+
+
+            return descripcion;
         }
-        public string obtenerValidaciones()
+        public List<string> obtenerValidaciones()
         {
-            return "Aqui irian las validaciones";
+            List<string> validacion = OpcionLlamada.getValidacion();
+            return validacion;
+        }
+        public string getNombre()
+        {
+            return nombre;
         }
 
     }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PPAI_IVR;
 
@@ -11,9 +12,11 @@ using PPAI_IVR;
 namespace PPAI_IVR.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230529011409_actualizacion")]
+    partial class actualizacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -322,9 +325,6 @@ namespace PPAI_IVR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ClienteId")
-                        .HasColumnType("int");
-
                     b.Property<string>("DescripcionOperador")
                         .HasColumnType("nvarchar(max)");
 
@@ -341,8 +341,6 @@ namespace PPAI_IVR.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
 
                     b.ToTable("Llamadas");
                 });
@@ -414,6 +412,10 @@ namespace PPAI_IVR.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Dni")
+                        .HasMaxLength(8)
+                        .HasColumnType("int");
+
+                    b.Property<int>("LlamadaId")
                         .HasColumnType("int");
 
                     b.Property<string>("NombreCompleto")
@@ -421,9 +423,13 @@ namespace PPAI_IVR.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("nroCelular")
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LlamadaId")
+                        .IsUnique();
 
                     b.ToTable("Clientes");
                 });
@@ -534,15 +540,6 @@ namespace PPAI_IVR.Migrations
                     b.Navigation("Validacion");
                 });
 
-            modelBuilder.Entity("PPAI_IVR.Clases.Llamada", b =>
-                {
-                    b.HasOne("PPAI_IVR.Models.Clases.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId");
-
-                    b.Navigation("Cliente");
-                });
-
             modelBuilder.Entity("PPAI_IVR.Clases.OpcionLlamada", b =>
                 {
                     b.HasOne("PPAI_IVR.Clases.Llamada", null)
@@ -557,6 +554,15 @@ namespace PPAI_IVR.Migrations
                     b.HasOne("PPAI_IVR.Clases.OpcionLlamada", null)
                         .WithMany("validacionesRequeridas")
                         .HasForeignKey("opcionLlamadaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PPAI_IVR.Models.Clases.Cliente", b =>
+                {
+                    b.HasOne("PPAI_IVR.Clases.Llamada", null)
+                        .WithOne("Cliente")
+                        .HasForeignKey("PPAI_IVR.Models.Clases.Cliente", "LlamadaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -578,6 +584,8 @@ namespace PPAI_IVR.Migrations
             modelBuilder.Entity("PPAI_IVR.Clases.Llamada", b =>
                 {
                     b.Navigation("CambiosDeEstados");
+
+                    b.Navigation("Cliente");
 
                     b.Navigation("OpcionLlamada");
                 });

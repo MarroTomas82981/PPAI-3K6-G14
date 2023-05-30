@@ -1,15 +1,16 @@
 ﻿@using PPAI_IVR.Models.Clases;
 @model Cliente
+
 @{
-    ViewData["Title"] = "Crear Cliente";
+    ViewData["Title"] = "Editar Cliente";
 }
 
-<h1>Crear Cliente</h1>
-
+<h1>Eeditar Tipo Cuenta: @Model.NombreCompleto</h1>
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<form asp-action="Crear">
+<form asp-action="Editar">
+    <input type="hidden" asp-for="Id" />
     <div class="mb-3">
         <label asp-for="NombreCompleto" class="form-label"></label>
         <input type="text" asp-for="NombreCompleto" class="form-control" />
@@ -25,9 +26,9 @@
         <input type="number" asp-for="nroCelular" class="form-control" />
         <span asp-validation-for="nroCelular" class="text-danger"></span>
     </div>
- 
-    
-    
+
+
+
     <button type="submit" class="btn btn-primary">Enviar</button>
     <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
 </form>

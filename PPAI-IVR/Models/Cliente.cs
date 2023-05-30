@@ -1,15 +1,22 @@
 ﻿using PPAI_IVR.Clases;
+using System.ComponentModel.DataAnnotations;
 
 namespace PPAI_IVR.Models.Clases
 {
     public class Cliente
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [Display(Name = "Nombre Completo")]
         public string NombreCompleto { get; set; }
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [Display(Name = "Numero de celular")]
         public int nroCelular { get; set; }
+        [Required(ErrorMessage = "El campo {0} es requerido")]
+        [Display(Name = "DNI")]
         public int Dni { get; set; }
-        public List<InformacionCliente> InformacionCliente { get; set; }
-        public int LlamadaId { get; set; }
+        public List<InformacionCliente> InformacionDelCliente { get; set; }
+        
 
 
         public bool esCliente()
@@ -21,9 +28,17 @@ namespace PPAI_IVR.Models.Clases
         {
             return NombreCompleto;
         }
-        public bool esInfoCorrecta()//Datos que pasa como parametros
+        public bool  esInfoCorrecta()//Datos que pasa como parametros
         {
-            return true; //ACA 
+            List<object> datosAValidar = new List<object>();
+            for (int i = 0; i < datosAValidar.Count; i++)
+            {
+                var datoAValidar = 1;
+                InformacionDelCliente[i].esValidacion();
+                bool info = InformacionDelCliente[i].EsInformaciónCorrecta(datoAValidar);
+
+            }    
+            return true;
         }
     }
 }

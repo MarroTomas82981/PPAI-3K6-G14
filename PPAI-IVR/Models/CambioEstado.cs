@@ -4,8 +4,13 @@
     {
         public int Id { get; set; }
         public DateTime FechaHoraInicio { get; set; }
-        public Estado Estado { get; set; }
-        
+        public Estado EstadoActual { get; set; }
+
+
+        public CambioEstado()
+        {
+            
+        }
 
         public bool esEstadoInicial()
         {
@@ -24,14 +29,14 @@
         {
             return "Estado";
         }
-        public CambioEstado crear(DateTime fechaHoraInicio, Estado estadoACambiar)
-        {
-           var cambioEstado = new CambioEstado
-           {
-               FechaHoraInicio = fechaHoraInicio,
-               Estado =estadoACambiar
-           };
-            return cambioEstado;
-        }
+        //public CambioEstado crear(DateTime fechaHoraInicio, Estado estadoACambiar)
+        //{
+        //   var cambioEstado = new CambioEstado()
+        //   {
+        //       FechaHoraInicio = fechaHoraInicio,
+        //       Estado =estadoACambiar
+        //   };
+        //    return cambioEstado;
+        //}
     }
 }

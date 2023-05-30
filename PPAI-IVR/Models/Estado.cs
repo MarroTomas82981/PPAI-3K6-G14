@@ -5,41 +5,45 @@
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int CambioEstadoId { get; set; }
+        
 
-        public class EnCurso : Estado
+        public Estado(int id, string nombre)
         {
-            public EnCurso()
-            {
-                Id = 1;
-                Nombre = "EnCurso";
-            }
+            Id = id;
+            Nombre = nombre;
         }
 
-        public class Finalizada : Estado
+        public Estado()
         {
-            public Finalizada()
-            {
-                Id = 2;
-                Nombre = "Finalizada";
-            }
         }
 
-        public class Iniciada : Estado
+        public static Estado Iniciada { get; } = new Estado(1, "Iniciada");
+        public static Estado EnCurso { get; } = new Estado(2, "EnCurso");
+        public static Estado Cancelada { get; } = new Estado(3, "Cancelada");
+        public static Estado Finalizada { get; } = new Estado(4, "Finalizada");
+        
+
+        public static List<Estado> Estados { get; } = new List<Estado>
+    {
+        Iniciada,
+        EnCurso,
+        Cancelada,
+        Finalizada
+    };
+
+
+        public Estado esEnCurso()
         {
-            public Iniciada()
+            Estado estadoEnCurso = null;
+
+            foreach (var est in Estados)
             {
-                Id = 3;
-                Nombre = "Iniciada";
+                if (est.Nombre == "EnCurso")
+                {
+                    estadoEnCurso = est;
+                }                
             }
-        }
-
-
-        public bool esEnCurso()
-        {
-            if (this.Nombre == "EnCurso") 
-            { 
-                return true;
-            }else { return false; }
+            return estadoEnCurso;
         }
 
         public bool esFinalizada()

@@ -14,6 +14,7 @@ namespace PPAI_IVR.Clases
         public Cliente Cliente { get; set; }
         public OpcionLlamada OpcionLlamada { get; set; }
         public List<CambioEstado> CambiosDeEstados { get; set; }
+        public CategoriaLlamada CategoriaLlamada { get; set; }
 
 
         public double calcualarDuracion()
@@ -25,9 +26,14 @@ namespace PPAI_IVR.Clases
         {
             return true;
         }
-        public bool esTomadaPorOperador()
+        public void EsTomadaPorOperador(Estado nombreDeEstadoACambiar, DateTime FechaHoraActual)
         {
-            return true;
+            CambioEstado nuevoCambioEstado = new CambioEstado {
+            FechaHoraInicio = FechaHoraActual,
+            EstadoActual = nombreDeEstadoACambiar
+            };
+            CambiosDeEstados.Add(nuevoCambioEstado);
+
         }
 
         public CambioEstado finalizar()
@@ -81,7 +87,7 @@ namespace PPAI_IVR.Clases
         }
         public void validarInformacionCliente()
         {
-
+            Cliente.esInfoCorrecta();
         }
 
 

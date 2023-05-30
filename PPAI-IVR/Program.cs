@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using PPAI_IVR;
+using PPAI_IVR.Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,9 @@ var politicaUsuariosAutenticados = new AuthorizationPolicyBuilder()
 
 
 // Add services to the container.
+builder.Services.AddTransient<IRepositorioClientes,RepostiorioClientes>();
+
+
 builder.Services.AddControllersWithViews(opciones =>
 {
     opciones.Filters.Add(new AuthorizeFilter(politicaUsuariosAutenticados));

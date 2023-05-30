@@ -1,0 +1,30 @@
+﻿@using PPAI_IVR.Clases;
+@using PPAI_IVR.Models.Clases;
+@model Llamada
+
+@{
+    ViewData["Title"] = "Registrar Llamada";
+}
+
+<h1>Registrar Llamada</h1>
+
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Crear">    
+    <div class="mb-3">
+        <label asp-for="@Model.Cliente.Dni" class="form-label"> Ingrese el DNI</label>
+        <input type="number" asp-for="@Model.Cliente.Dni" class="form-control" />
+        <span asp-validation-for="@Model.Cliente.Dni" class="text-danger"></span>
+    </div>
+    
+
+
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
