@@ -85,9 +85,9 @@ namespace PPAI_IVR.Clases
         {
 
         }
-        public void validarInformacionCliente()
+        public void validarInformacionCliente(string respuestaAValidar)
         {
-            Cliente.esInfoCorrecta();
+            Cliente.esInfoCorrecta(respuestaAValidar);
         }
 
 

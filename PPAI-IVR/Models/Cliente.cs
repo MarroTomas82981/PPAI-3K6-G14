@@ -28,16 +28,10 @@ namespace PPAI_IVR.Models.Clases
         {
             return NombreCompleto;
         }
-        public bool  esInfoCorrecta()//Datos que pasa como parametros
+        public bool  esInfoCorrecta(string respuestasAValidar)//Datos que pasa como parametros
         {
-            List<object> datosAValidar = new List<object>();
-            for (int i = 0; i < datosAValidar.Count; i++)
-            {
-                var datoAValidar = 1;
-                InformacionDelCliente[i].esValidacion();
-                bool info = InformacionDelCliente[i].EsInformaciónCorrecta(datoAValidar);
-
-            }    
+            
+           
             return true;
         }
     }

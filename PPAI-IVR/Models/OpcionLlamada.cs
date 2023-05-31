@@ -23,9 +23,9 @@ namespace PPAI_IVR.Clases
         public List<string> getDescripcioneConSubOpcion()
         {
             var list = new List<string>();
-            for (int i = 0; i < validacionesRequeridas.Count; i++)
+            for (int i = 0; i < subOpcionesLlamada.Count; i++)
             {
-                list.Add(subOpcionesLlamada[i].nombre);
+                list.Add(subOpcionesLlamada[i].getNombre());
             }
             return list;
         }

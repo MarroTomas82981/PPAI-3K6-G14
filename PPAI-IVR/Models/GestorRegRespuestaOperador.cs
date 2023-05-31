@@ -8,6 +8,9 @@ namespace PPAI_IVR.Models
         public DateTime FechaHoraActual { get; set; }
         public Llamada LlamadaEnCurso { get; set; }
         public Estado EstadoEnCurso { get; set; }
+        public CategoriaLlamada CategoriaSeleccionada { get; set; }
+        public string respuestaOperador { get; set; }
+        public bool confimacion { get;set; }
 
 
 
@@ -32,17 +35,38 @@ namespace PPAI_IVR.Models
             LlamadaEnCurso.EsTomadaPorOperador(EstadoEnCurso, FechaHoraActual);
         }
 
-        public void buscarDatosLlamadaActual()
+        public List<object> buscarDatosLlamadaActual()
         {
-            var nombreClienteLlamada = LlamadaEnCurso.obtenerNombreClienteLlamada();
-            List<string> descripciones = LlamadaEnCurso.CategoriaLlamada.obtenerDescripcionCategoriaYOpcion();
+            List<object> lista = new List<object>();            
+            string nombreClienteLlamada = LlamadaEnCurso.obtenerNombreClienteLlamada();
+            lista.Add(nombreClienteLlamada);
+            List<object> descripciones = LlamadaEnCurso.CategoriaLlamada.obtenerDescripcionCategoriaYOpcion();
+            lista.Add(descripciones);
             List<string> validaciones = LlamadaEnCurso.CategoriaLlamada.obtenerValidaciones();
+            lista.Add(validaciones);
 
+            return lista;
         }
 
-        public void tomarOpcionDeValidacion()
+        public void tomarOpcionDeValidacion(string respuesta)
         {
-            LlamadaEnCurso.validarInformacionCliente();
+            LlamadaEnCurso.validarInformacionCliente(respuesta);
+        }
+
+
+        public void tomarRespuestaOperador(string respuesta)
+        {
+            respuestaOperador = respuesta;
+        }
+
+        public void tomarConfirmacion(bool seleccionadaConfirmacion)
+        {
+            confimacion = seleccionadaConfirmacion;
+        }
+
+        public GestorRegRespuestaOperador()
+        {
+            
         }
 
     }

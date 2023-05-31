@@ -1,24 +1,36 @@
 ﻿@using PPAI_IVR.Clases;
 @using PPAI_IVR.Models.Clases;
-@model Llamada
+
+@model GestorRegRespuestaOperador;
 
 @{
     ViewData["Title"] = "Comunicarse con el operador";
+
+
 }
 
 <h1>El cliente se comunico contigo</h1>
 
+<form>
 
-<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-<form asp-action="Crear">
-    <div class="mb-3">
-        <label asp-for="@Model.Cliente.Dni" class="form-label"> Ingrese el DNI</label>
-        <input type="number" asp-for="@Model.Cliente.Dni" class="form-control" />
-        <span asp-validation-for="@Model.Cliente.Dni" class="text-danger"></span>
+    <div class="card">
+        <div class="header">
+            <div>
+                <a class="title">
+                    Nombre: 
+                </a>
+            </div>
+            <span class="image"></span>
+        </div>
+        <dl class="post-info">
+            <div class="cr">
+                <dt class="dt">Categoria: </dt>
+            </div>
+            <div class="cr">
+                <dt class="dt">Opcion: </dt>
+            </div>
+        </dl>
     </div>
-
-
 
 
     <button type="submit" class="btn btn-primary">Enviar</button>

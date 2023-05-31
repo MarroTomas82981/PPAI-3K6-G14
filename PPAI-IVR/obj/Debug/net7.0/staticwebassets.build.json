@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IEvpqFanwjtk5v4uzs/1+3V3dcGcuwPCscWJyZ/Ucoo=",
+  "Hash": "qU4EbhpV29KBSFL2Py79bt+yRxvbvwkrfoIgUhf/r7Y=",
   "Source": "PPAI-IVR",
   "BasePath": "_content/PPAI-IVR",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\PPAI-IVR.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\wwwroot\\css\\operadorLlamada.css",
+      "SourceId": "PPAI-IVR",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\wwwroot\\",
+      "BasePath": "_content/PPAI-IVR",
+      "RelativePath": "css/operadorLlamada.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\operadorLlamada.css"
     },
     {
       "Identity": "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\wwwroot\\css\\site.css",

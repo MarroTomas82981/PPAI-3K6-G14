@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\PPAI-IVR.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\wwwroot\\css\\operadorLlamada.css",
+      "PackagePath": "staticwebassets\\css\\operadorLlamada.css"
+    },
+    {
       "Id": "C:\\Users\\tomas\\Downloads\\DSI\\2023\\PPAI\\c#\\PPAI-IVR\\PPAI-IVR\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

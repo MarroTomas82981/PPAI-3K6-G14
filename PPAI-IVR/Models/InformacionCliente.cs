@@ -3,37 +3,25 @@
     public class InformacionCliente
     {
         public int Id { get; set; }
-        public DateTime datoAValidarNacimiento { get; set; }
-        public int datoAValidarDni { get; set; }
-        public Validacion Validacion { get; set; }
+        
+        public string datoAValidar { get; set; }
+        
         public int ClienteId { get; set; }
 
 
-        public bool EsInformaciónCorrecta(object datoAValidar)
+        public bool EsInformaciónCorrecta(string respuestaAValidar)
         {
-            if (datoAValidar is int)
+           if (datoAValidar == respuestaAValidar) 
             {
-                int dato = (int)datoAValidar;
-                if (dato == datoAValidarDni)
-                {
-                    return true;
-                }
-            }
-
-            if (datoAValidar is DateTime)
-            {
-                DateTime dato = (DateTime)datoAValidar;
-                if (dato == datoAValidarNacimiento)
-                {
-                    return true;
-                }
+                return true;
+                    
             }
             return false;
         }
 
         public bool esValidacion()
         {
-            return false;
+            return true;
         }
     }
 }
