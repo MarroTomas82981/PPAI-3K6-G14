@@ -15,13 +15,18 @@
         {
             return audioMensajeOpciones;
         }
-        public List<string> obtenerDescripcionCategoriaYOpcion()
+        public List<List<string>> obtenerDescripcionCategoriaYOpcion()
         {
-            var nombre = getNombre();
+            List<List<string>> lista = new List<List<string>>();
+            List<string> lista2 = new List<string>();
+            string nombre = getNombre();
+            lista2.Add(nombre);
+            lista.Add(lista2);
             var descripcion = OpcionLlamada.getDescripcioneConSubOpcion();
+            lista.Add(descripcion);
 
 
-            return descripcion;
+            return lista;
         }
         public List<string> obtenerValidaciones()
         {

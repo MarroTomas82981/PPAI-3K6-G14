@@ -1,65 +1,95 @@
 ﻿@using PPAI_IVR.Clases;
 @using PPAI_IVR.Models.Clases;
+
 @model GestorRegRespuestaOperador;
 
 @{
     ViewData["Title"] = "Comunicarse con el operador";
 
-GestorRegRespuestaOperador gestor = new GestorRegRespuestaOperador
-{
-    LlamadaEnCurso = new Llamada
-    {
-        Cliente = new Cliente
-        {
-            NombreCompleto = "Antonio Lopez"
-        },
-        OpcionLlamada = new OpcionLlamada
-        {
-            subOpcionesLlamada = new List<SubOpcionLlamada>
+    GestorRegRespuestaOperador gestor = new GestorRegRespuestaOperador
             {
-                new SubOpcionLlamada
+                LlamadaEnCurso = new Llamada
                 {
-                    nombre = "Comunicarse con un Operador",
-                    nroOrden = 2
-                }
-            }
-        }
-    },
-    CategoriaSeleccionada = new CategoriaLlamada
-    {
-        nombre = "Robo",
-        nroOrden = 5,
-        OpcionLlamada = new OpcionLlamada
-        {
-            Nombre = "Solicitar cancelación de la tarjeta de crédito"
-        }
-    }
-};
+                    Cliente = new Cliente
+                    {
+                        Id = 1,
+                        NombreCompleto = "Antonio Lopez",
+                        InformacionDelCliente = new List<InformacionCliente>
+                        {
+                            new InformacionCliente
+                            {
+                                datoAValidar = "4 Hijos",
+                                Id = 2,
+                            }
+                        }
+                    },
+                    OpcionLlamada = new OpcionLlamada
+                    {
 
+                    },
+                    CambiosDeEstados = new List<CambioEstado>
+                    {
+                        new CambioEstado
+                        {
+                            FechaHoraInicio = DateTime.Now,
+                            EstadoActual = new Estado
+                            {
+                                Nombre = "Iniciada",
+                                Id = 1
+                            }
+                        }
+                    }
+                },
+                CategoriaSeleccionada = new CategoriaLlamada
+                {
+                    Id = 1,
+                    nombre = "Robo",
+                    nroOrden = 5,
+                    OpcionLlamada = new OpcionLlamada
+                    {
+                        Nombre = "Solicitar cancelación de la tarjeta de crédito",
+
+                        subOpcionesLlamada = new List<SubOpcionLlamada>{
+
+                            new SubOpcionLlamada{
+                                Id = 1,
+                                nombre = "Comunicarse con un Operador",
+                                nroOrden = 2
+                            }
+                        },
+                        validacionesRequeridas = new List<Validacion>
+                        {
+                            new Validacion
+                            {
+                                Id = 1,
+                                NroOrden = 1,
+                                audioMensajeValidacion = " 2 Hijos",
+                                Nombre = "Primera Opcion"
+                            },
+                            new Validacion
+                            {
+                                NroOrden= 2,
+                                Id = 2,
+                                audioMensajeValidacion = " 5 Hijos",
+                                Nombre = "Segunda Opcion"
+                            },
+                            new Validacion
+                            {
+                                NroOrden = 3,
+                                Id = 3,
+                                audioMensajeValidacion = " 4 Hijos",
+                                Nombre = "Tercera Opcion"
+                            }
+                        }
+                    }
+                }
+            };
 }
 
 <h1>El cliente se comunico contigo</h1>
 
 <form>
-
-    <div class="card">
-        <div class="header">
-            <div>
-                <a class="title">
-                    Nombre: @gestor.buscarDatosLlamadaActual()
-                </a>
-            </div>
-            <span class="image"></span>
-        </div>
-        <dl class="post-info">
-            <div class="cr">
-                <dt class="dt">Categoria: </dt>
-            </div>
-            <div class="cr">
-                <dt class="dt">Opcion: </dt>
-            </div>
-        </dl>
-    </div>
+    <partial name="_DatosLlamada" model="@gestor.buscarDatosLlamadaActual()" />
 
     <button type="submit" class="btn btn-primary">Enviar</button>
     <a class="btn btn-secondary" asp-action="Index">Cancelar</a>

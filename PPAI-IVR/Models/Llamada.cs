@@ -8,7 +8,7 @@ namespace PPAI_IVR.Clases
         public int Id { get; set; }
         public string DescripcionOperador { get; set; }
         public string DetalleAccionRequerida { get; set; }
-        public double Duracion { get; set; }
+        public TimeSpan Duracion { get; set; }
         public bool EncuestaEnviada { get; set; }
         public string ObservacionAuditor { get; set; }
         public Cliente Cliente { get; set; }
@@ -17,9 +17,9 @@ namespace PPAI_IVR.Clases
         public CategoriaLlamada CategoriaLlamada { get; set; }
 
 
-        public double calcualarDuracion()
+        public TimeSpan calcualarDuracion(DateTime fechaHoraFin, DateTime fechaHoraInicio)
         {
-            return 8.89;
+            return fechaHoraFin - fechaHoraInicio;
         }
 
         public bool esDePeriodo()
@@ -36,12 +36,19 @@ namespace PPAI_IVR.Clases
 
         }
 
-        public CambioEstado finalizar()
+        public void finalizar(DateTime fechaHoraActual, Estado estadoEnCurso)
         {
-            return null;
+            TimeSpan duracion = this.calcualarDuracion(fechaHoraActual, CambiosDeEstados[0].FechaHoraInicio);
+            this.setDuracion(duracion);
+            CambioEstado nuevoCambioEstado = new CambioEstado
+            {
+                FechaHoraInicio = fechaHoraActual,
+                EstadoActual = estadoEnCurso
+            };
+            CambiosDeEstados.Add(nuevoCambioEstado);
         }
 
-        public double getDuracion()
+        public TimeSpan getDuracion()
         {
             return Duracion;
         }
@@ -51,8 +58,9 @@ namespace PPAI_IVR.Clases
             return "Respuesta";
         }
 
-        public Llamada crear(string descripcionOperador, double duracion = 0, bool enviada = false, string observacion = null, string detalleAccion= null)
+        public Llamada crear(string descripcionOperador, bool enviada = false, string observacion = null, string detalleAccion= null)
         {
+            TimeSpan duracion = TimeSpan.Zero;
             var llamada = new Llamada{
                 DescripcionOperador = descripcionOperador,
                 Duracion = duracion,
@@ -77,17 +85,17 @@ namespace PPAI_IVR.Clases
         {
             this.DescripcionOperador = descripcion;
         } 
-        public void setDuracion(double duracion)
+        public void setDuracion(TimeSpan duracion)
         {
             this.Duracion = duracion;
         }
-        public void setEstadoActual()
+        public void setEstadoActual(TimeSpan duracion)
         {
-
+            Duracion = duracion;
         }
-        public void validarInformacionCliente()
+        public void validarInformacionCliente(string respuestaAValidar)
         {
-            Cliente.esInfoCorrecta();
+            Cliente.esInfoCorrecta(respuestaAValidar);
         }
 
 

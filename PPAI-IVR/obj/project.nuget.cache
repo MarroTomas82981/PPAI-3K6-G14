@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8sr0e9n1FIcZBq/zMQFyEa2PsFih01+MoJk2oaSz8zdQ6JPndTklbXrzqmhi3PUQAUEOSBedDfTixweHuziDOw==",
+  "dgSpecHash": "EdMTmujMOlsxNb+eU/qLnVzginlcnNEhiQ828Z/vLcNEpZGT45rJFR+nSv750XPJKU/5xs1dfAiEiMBzTeqj5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj",
+  "projectFilePath": "C:\\Users\\anton\\source\\repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anton\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

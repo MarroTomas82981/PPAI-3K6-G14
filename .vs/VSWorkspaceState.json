@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\PPAI-IVR",
+    "\\PPAI-IVR\\Controllers",
+    "\\PPAI-IVR\\Models",
+    "\\PPAI-IVR\\Views",
+    "\\PPAI-IVR\\Views\\Home",
+    "\\PPAI-IVR\\Views\\Llamadas",
+    "\\PPAI-IVR\\wwwroot"
   ],
-  "SelectedNode": "\\PPAI-IVR.sln",
+  "SelectedNode": "\\PPAI-IVR\\Views",
   "PreviewInSolutionExplorer": false
 }

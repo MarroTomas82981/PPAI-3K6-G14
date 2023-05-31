@@ -46,13 +46,17 @@
             return estadoEnCurso;
         }
 
-        public bool esFinalizada()
+        public Estado esFinalizada()
         {
-            if (this.Nombre == "Finalizada")
+            Estado estadoFinalizada = null;
+            foreach (var est in Estados)
             {
-                return true;
+                if (est.Nombre == "Finalizada")
+                {
+                    estadoFinalizada = est;
+                }
             }
-            else { return false; }
+            return estadoFinalizada;
         }
         public bool esIniciada()
         {

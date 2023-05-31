@@ -1,0 +1,24 @@
+﻿@model DatosLlamadaViewModel;
+@{
+    DatosLlamadaViewModel datos = new DatosLlamadaViewModel();
+    //string nombreCategoria = Model[1][0].ToString();
+}
+
+<div class="card">
+    <div class="header">
+        <div>
+            <a class="title">
+                Nombre: @Model[0].ToString()
+            </a>
+        </div>
+        <span class="image"></span>
+    </div>
+    <dl class="post-info">
+        <div class="cr">
+            <dt class="dt">Categoria: </dt>
+        </div>
+        <div class="cr">
+            <dt class="dt">Opcion: </dt>
+        </div>
+    </dl>
+</div>

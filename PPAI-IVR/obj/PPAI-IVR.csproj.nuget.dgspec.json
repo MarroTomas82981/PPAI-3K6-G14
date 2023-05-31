@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj": {}
+    "C:\\Users\\anton\\source\\repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj": {
+    "C:\\Users\\anton\\source\\repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj",
+        "projectUniqueName": "C:\\Users\\anton\\source\\repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj",
         "projectName": "PPAI-IVR",
-        "projectPath": "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj",
+        "projectPath": "C:\\Users\\anton\\source\\repos\\PPAI-3K6-G14\\PPAI-IVR\\PPAI-IVR.csproj",
         "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anton\\Source\\Repos\\PPAI-3K6-G14\\PPAI-IVR\\obj\\",
+        "outputPath": "C:\\Users\\anton\\source\\repos\\PPAI-3K6-G14\\PPAI-IVR\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
