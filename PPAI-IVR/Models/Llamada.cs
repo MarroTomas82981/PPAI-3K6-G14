@@ -14,7 +14,7 @@ namespace PPAI_IVR.Clases
         public Cliente Cliente { get; set; }
         public OpcionLlamada OpcionLlamada { get; set; }
         public List<CambioEstado> CambiosDeEstados { get; set; }
-        public CategoriaLlamada CategoriaLlamada { get; set; }
+        
 
 
         public TimeSpan calcualarDuracion(DateTime fechaHoraFin, DateTime fechaHoraInicio)
