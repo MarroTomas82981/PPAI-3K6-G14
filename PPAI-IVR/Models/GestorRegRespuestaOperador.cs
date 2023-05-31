@@ -64,6 +64,31 @@ namespace PPAI_IVR.Models
             confimacion = seleccionadaConfirmacion;
         }
 
+
+        public void llamarACU28()
+        {
+
+        }
+
+        public Estado buscarEstadoFinalizada()
+        {
+            Estado estado = new Estado();
+            Estado estadoFinalizada = estado.esFinalizada();
+            EstadoEnCurso = estadoFinalizada;
+            return estadoFinalizada;
+        }
+
+        public void finalizarLlamada()
+        {
+            LlamadaEnCurso.finalizar(FechaHoraActual, EstadoEnCurso);
+        }
+
+
+        public void FinCU()
+        {
+
+        }
+
         public GestorRegRespuestaOperador()
         {
             
