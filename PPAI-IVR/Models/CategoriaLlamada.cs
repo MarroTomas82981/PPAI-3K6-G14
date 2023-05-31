@@ -1,4 +1,6 @@
-﻿namespace PPAI_IVR.Clases
+﻿using PPAI_IVR.Models;
+
+namespace PPAI_IVR.Clases
 {
     public class CategoriaLlamada
     {
@@ -15,20 +17,21 @@
         {
             return audioMensajeOpciones;
         }
-        public List<object> obtenerDescripcionCategoriaYOpcion()
+        public DescripcionCategoriaViewModel obtenerDescripcionCategoriaYOpcion()
         {
-            List<object> lista = new List<object>();
+            DescripcionCategoriaViewModel lista = new DescripcionCategoriaViewModel();            
             string nombre = getNombre();
-            lista.Add(nombre);
-            var descripcion = OpcionLlamada.getDescripcioneConSubOpcion();
-            lista.Add(descripcion);
-
+            lista.nombreCategoria = nombre;
+            OpcionLlamadaViewModel nombreOpcion = OpcionLlamada.getDescripcioneConSubOpcion();
+            lista.OpcionLlamada.Nombre = nombreOpcion.nombreOpcion;
+            lista.OpcionLlamada.subOpcionesLlamada[0].nombre = nombreOpcion.SubOpcionLlamada.nombre;
 
             return lista;
         }
-        public List<string> obtenerValidaciones()
+        public ValidacionesViewModel ObtenerValidaciones(List<Validacion> validaciones)
         {
-            List<string> validacion = OpcionLlamada.getValidacion();
+            ValidacionesViewModel validacion = new ValidacionesViewModel();
+            validacion.audioValidaciones = OpcionLlamada.getValidacion(validaciones);
             return validacion;
         }
         public string getNombre()

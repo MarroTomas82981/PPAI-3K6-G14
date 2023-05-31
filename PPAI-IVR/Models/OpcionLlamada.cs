@@ -20,21 +20,20 @@ namespace PPAI_IVR.Clases
         {
             return audioMensajeSubOpciones;
         }
-        public List<string> getDescripcioneConSubOpcion()
+        public OpcionLlamadaViewModel getDescripcioneConSubOpcion()
         {
-            var list = new List<string>();
-            for (int i = 0; i < subOpcionesLlamada.Count; i++)
-            {
-                list.Add(subOpcionesLlamada[i].getNombre());
-            }
-            return list;
+            OpcionLlamadaViewModel opcion = new OpcionLlamadaViewModel();
+            opcion.nombreOpcion = Nombre;
+            opcion.SubOpcionLlamada.nombre = subOpcionesLlamada[0].getNombre();
+            return opcion;
         }
-        public List<string> getValidacion()
+        public List<string> getValidacion(List<Validacion> validaciones)
         {
             var audioMensajes = new List<string>();
-            for (int i = 0; i < validacionesRequeridas.Count; i++)
+
+            foreach (var validacion in validaciones)            
             {
-                audioMensajes.Add(validacionesRequeridas[i].getAudioMensajeValidacion());
+                audioMensajes.Add(validacion.getAudioMensajeValidacion());
             }
             return audioMensajes;
         }

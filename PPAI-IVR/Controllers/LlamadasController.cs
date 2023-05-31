@@ -93,9 +93,11 @@ namespace PPAI_IVR.Controllers
                 }
             };
 
-            var paraMostrar = gestor.buscarDatosLlamadaActual();
-            return Ok(paraMostrar);
+            DatosLlamadaViewModel paraMostrar = gestor.buscarDatosLlamadaActual();
+            return View(paraMostrar);
         }
+
+
 
 
     }

@@ -35,15 +35,15 @@ namespace PPAI_IVR.Models
             LlamadaEnCurso.EsTomadaPorOperador(EstadoEnCurso, FechaHoraActual);
         }
 
-        public List<object> buscarDatosLlamadaActual()
+        public DatosLlamadaViewModel buscarDatosLlamadaActual()
         {
-            List<object> lista = new List<object>();            
+            DatosLlamadaViewModel lista = new DatosLlamadaViewModel();             
             string nombreClienteLlamada = LlamadaEnCurso.obtenerNombreClienteLlamada();
-            lista.Add(nombreClienteLlamada);
-            List<object> descripciones = LlamadaEnCurso.CategoriaLlamada.obtenerDescripcionCategoriaYOpcion();
-            lista.Add(descripciones);
-            List<string> validaciones = LlamadaEnCurso.CategoriaLlamada.obtenerValidaciones();
-            lista.Add(validaciones);
+            lista.nombreCliente = nombreClienteLlamada;
+            DescripcionCategoriaViewModel descripciones = CategoriaSeleccionada.obtenerDescripcionCategoriaYOpcion();
+            lista.CategoriaAMostrar = descripciones;
+            ValidacionesViewModel validaciones = CategoriaSeleccionada.ObtenerValidaciones(LlamadaEnCurso.OpcionLlamada.validacionesRequeridas);
+            
 
             return lista;
         }
