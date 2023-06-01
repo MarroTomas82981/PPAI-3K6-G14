@@ -4,6 +4,6 @@ namespace PPAI_IVR.Models
 {
     public class ValidacionesViewModel
     {
-        public List<string> audioValidaciones {  get; set; }
+        public List<string> validaciones {  get; set; }
     }
 }

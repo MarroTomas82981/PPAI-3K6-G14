@@ -1,25 +1,42 @@
 ﻿@model DatosLlamadaViewModel;
 @{
-    DatosLlamadaViewModel datos = new DatosLlamadaViewModel();
+   
     
 }
 
-<div class="card">
-    <div class="header">
+<div class="container">
+    <div class="header col-12">
         <div>
-            <a class="title">
-                Nombre: 
+            <a class="title" style="font-size: 18px;"> Nombre Cliente: @Model.nombreCliente.ToString()
             </a>
         </div>
         <span class="image"></span>
     </div>
-    <dl class="post-info">
+    <dl class="post-info col-11">
         <div class="cr">
-            <dt class="dt">Categoria: 
-                .ToString()   </dt>
+            <dt class="dt" style="font-size: 14px;">Categoria Llamada: @Model.CategoriaAMostrar.nombreCategoria.ToString()</dt>
+            <dt class="dt" style="font-size: 14px;">Opcion Seleccionada: @Model.CategoriaAMostrar.OpcionLlamada.Nombre.ToString()</dt>
+            <dt class="dt" style="font-size: 14px;">Sub-Opcion Seleccionada: @Model.CategoriaAMostrar.OpcionLlamada.subOpcionesLlamada[0].nombre.ToString()</dt>
         </div>
-        <div class="cr">
-            <dt class="dt">Opcion: </dt>
+        <div class="cd">
+            Validaciones:            
+            <select id="miSelect" onchange="habilitarTextarea()">
+                <option value="">Selecciona la validacion</option>
+                @foreach (string opcion in Model.Validaciones)
+                {
+                    <option value="@opcion">@opcion</option>
+                }
+            </select>
+
         </div>
+            <div class="mt-3">
+                <p class="col-8" style="align-content:center;"> Descripcion de respuesta:</p><textarea id="miTextarea" disabled></textarea>
+            </div>
+            
+        
     </dl>
 </div>
+
+@section Scripts{
+    
+}

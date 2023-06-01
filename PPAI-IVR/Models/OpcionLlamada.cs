@@ -23,13 +23,14 @@ namespace PPAI_IVR.Clases
         public OpcionLlamadaViewModel getDescripcioneConSubOpcion()
         {
             OpcionLlamadaViewModel opcion = new OpcionLlamadaViewModel();
+            opcion.SubOpcionLlamada = new SubOpcionLlamada();
             opcion.nombreOpcion = Nombre;
             opcion.SubOpcionLlamada.nombre = subOpcionesLlamada[0].getNombre();
             return opcion;
         }
-        public List<string> getValidacion(List<Validacion> validaciones)
+        public List<string> getValidaciones(List<Validacion> validaciones)
         {
-            var audioMensajes = new List<string>();
+            List<string> audioMensajes = new List<string>();
 
             foreach (var validacion in validaciones)            
             {

@@ -42,8 +42,12 @@ namespace PPAI_IVR.Models
             lista.nombreCliente = nombreClienteLlamada;
             DescripcionCategoriaViewModel descripciones = CategoriaSeleccionada.obtenerDescripcionCategoriaYOpcion();
             lista.CategoriaAMostrar = descripciones;
-            ValidacionesViewModel validaciones = CategoriaSeleccionada.ObtenerValidaciones(LlamadaEnCurso.OpcionLlamada.validacionesRequeridas);
-            
+            ValidacionesViewModel validaciones = CategoriaSeleccionada.ObtenerValidaciones(CategoriaSeleccionada.OpcionLlamada.validacionesRequeridas);
+            lista.Validaciones = new List<string>();
+            foreach (var val in validaciones.validaciones)
+            {
+                lista.Validaciones.Add(val);
+            }            
 
             return lista;
         }

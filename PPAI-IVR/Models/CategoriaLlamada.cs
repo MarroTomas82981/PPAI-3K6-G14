@@ -1,4 +1,5 @@
 ﻿using PPAI_IVR.Models;
+using PPAI_IVR.Models.Clases;
 
 namespace PPAI_IVR.Clases
 {
@@ -23,6 +24,9 @@ namespace PPAI_IVR.Clases
             string nombre = getNombre();
             lista.nombreCategoria = nombre;
             OpcionLlamadaViewModel nombreOpcion = OpcionLlamada.getDescripcioneConSubOpcion();
+            lista.OpcionLlamada = new OpcionLlamada();
+            lista.OpcionLlamada.subOpcionesLlamada = new List<SubOpcionLlamada>{new SubOpcionLlamada{ } };
+                
             lista.OpcionLlamada.Nombre = nombreOpcion.nombreOpcion;
             lista.OpcionLlamada.subOpcionesLlamada[0].nombre = nombreOpcion.SubOpcionLlamada.nombre;
 
@@ -31,7 +35,7 @@ namespace PPAI_IVR.Clases
         public ValidacionesViewModel ObtenerValidaciones(List<Validacion> validaciones)
         {
             ValidacionesViewModel validacion = new ValidacionesViewModel();
-            validacion.audioValidaciones = OpcionLlamada.getValidacion(validaciones);
+            validacion.validaciones = OpcionLlamada.getValidaciones(validaciones);
             return validacion;
         }
         public string getNombre()
