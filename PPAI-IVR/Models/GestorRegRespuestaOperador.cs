@@ -51,10 +51,10 @@ namespace PPAI_IVR.Models
             DescripcionCategoriaViewModel descripciones = CategoriaSeleccionada.obtenerDescripcionCategoriaYOpcion();
             lista.CategoriaAMostrar = descripciones;
             ValidacionesViewModel validaciones = CategoriaSeleccionada.ObtenerValidaciones(CategoriaSeleccionada.OpcionLlamada.validacionesRequeridas);
-            lista.Validaciones = new List<Validacion>();
-            foreach (var val in validaciones.validaciones)
+            lista.audioMensajesValidaciones = new List<string>();
+            foreach (var val in validaciones.audioMensajesValidaciones)
             {
-                lista.Validaciones.Add(val);
+                lista.audioMensajesValidaciones.Add(val);
             }            
 
             return lista;
@@ -72,6 +72,8 @@ namespace PPAI_IVR.Models
             CategoriaSeleccionada = categoriaLlamada;
             ObtenerFechaHoraActual();
             buscarEstadoEnCurso();
+            LlamadaEnCurso.EsTomadaPorOperador(EstadoEnCurso,FechaHoraActual);
+            buscarDatosLlamadaActual();
 
 
         }

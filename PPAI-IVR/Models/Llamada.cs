@@ -28,9 +28,10 @@ namespace PPAI_IVR.Clases
         }
         public void EsTomadaPorOperador(Estado nombreDeEstadoACambiar, DateTime FechaHoraActual)
         {
-            CambioEstado nuevoCambioEstado = new CambioEstado {
-            FechaHoraInicio = FechaHoraActual,
-            EstadoActual = nombreDeEstadoACambiar
+            CambioEstado nuevoCambioEstado = new CambioEstado 
+            {
+                FechaHoraInicio = FechaHoraActual,
+                EstadoActual = nombreDeEstadoACambiar
             };
             CambiosDeEstados.Add(nuevoCambioEstado);
 
