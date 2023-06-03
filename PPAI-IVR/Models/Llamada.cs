@@ -93,9 +93,11 @@ namespace PPAI_IVR.Clases
         {
             Duracion = duracion;
         }
-        public void validarInformacionCliente(string respuestaAValidar)
+        public bool validarInformacionCliente(OpcionValidacion respuestaAValidar)
         {
-            Cliente.esInfoCorrecta(respuestaAValidar);
+            bool correcta = false;
+            correcta = Cliente.esInfoCorrecta(respuestaAValidar);
+            return correcta;
         }
 
 

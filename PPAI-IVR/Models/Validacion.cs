@@ -7,6 +7,7 @@
         public string audioMensajeValidacion { get; set; }
         public int NroOrden { get; set; }
         public int opcionLlamadaId { get; set; }
+        public List<OpcionValidacion> opcionValidacions { get; set; }
 
 
         public string getAudioMensajeValidacion()

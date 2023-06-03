@@ -1,4 +1,5 @@
-﻿using PPAI_IVR.Clases;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using PPAI_IVR.Clases;
 using System.Runtime.CompilerServices;
 
 namespace PPAI_IVR.Models
@@ -8,6 +9,7 @@ namespace PPAI_IVR.Models
         public DateTime FechaHoraActual { get; set; }
         public Llamada LlamadaEnCurso { get; set; }
         public Estado EstadoEnCurso { get; set; }
+        public Estado EstadoFinalizada { get; set; }
         public CategoriaLlamada CategoriaSeleccionada { get; set; }
         public string respuestaOperador { get; set; }
         public bool confimacion { get;set; }
@@ -17,17 +19,23 @@ namespace PPAI_IVR.Models
 
 
 
-        public void obtenerFechaHoraActual()
+        public DateTime ObtenerFechaHoraActual()
         {
-            FechaHoraActual = DateTime.Now;
+            DateTime fechaHoraActual = DateTime.Now;
+            FechaHoraActual = fechaHoraActual;
+            return fechaHoraActual;
         }
 
-        public Estado buscarEstadoEnCurso()
+        public void buscarEstadoEnCurso()
         {
             Estado estado = new Estado();
-            Estado estadoEnCurso = estado.esEnCurso();
+            Estado estadoEnCurso = estado.getEnCurso();
             EstadoEnCurso = estadoEnCurso;
-            return estadoEnCurso;
+           
+        }
+        public void asignarEstadoEnCurso()
+        {
+            tomadaPorOperador();
         }
 
         public void tomadaPorOperador() 
@@ -43,7 +51,7 @@ namespace PPAI_IVR.Models
             DescripcionCategoriaViewModel descripciones = CategoriaSeleccionada.obtenerDescripcionCategoriaYOpcion();
             lista.CategoriaAMostrar = descripciones;
             ValidacionesViewModel validaciones = CategoriaSeleccionada.ObtenerValidaciones(CategoriaSeleccionada.OpcionLlamada.validacionesRequeridas);
-            lista.Validaciones = new List<string>();
+            lista.Validaciones = new List<Validacion>();
             foreach (var val in validaciones.validaciones)
             {
                 lista.Validaciones.Add(val);
@@ -52,20 +60,29 @@ namespace PPAI_IVR.Models
             return lista;
         }
 
-        public void tomarOpcionDeValidacion(string respuesta)
+        public bool tomarOpcionDeValidacion(string respuesta)
         {
-            LlamadaEnCurso.validarInformacionCliente(respuesta);
+            return LlamadaEnCurso.validarInformacionCliente(respuesta);
         }
 
 
-        public void tomarRespuestaOperador(string respuesta)
+        public void tomarRespuestaOperador(Llamada llamada, CategoriaLlamada categoriaLlamada)
         {
-            respuestaOperador = respuesta;
+            LlamadaEnCurso = llamada;
+            CategoriaSeleccionada = categoriaLlamada;
+            ObtenerFechaHoraActual();
+            buscarEstadoEnCurso();
+
+
         }
 
-        public void tomarConfirmacion(bool seleccionadaConfirmacion)
+        public void tomarConfirmacion()
         {
-            confimacion = seleccionadaConfirmacion;
+            llamarACU28();
+            EstadoFinalizada = buscarEstadoFinalizada();
+            DateTime fechaHora = ObtenerFechaHoraActual();
+            finalizarLlamada(fechaHora);
+
         }
 
 
@@ -82,9 +99,9 @@ namespace PPAI_IVR.Models
             return estadoFinalizada;
         }
 
-        public void finalizarLlamada()
+        public void finalizarLlamada( DateTime fechaHora )
         {
-            LlamadaEnCurso.finalizar(FechaHoraActual, EstadoEnCurso);
+            LlamadaEnCurso.finalizar(fechaHora, EstadoEnCurso);
         }
 
 

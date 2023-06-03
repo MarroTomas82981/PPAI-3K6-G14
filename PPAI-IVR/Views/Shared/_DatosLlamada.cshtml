@@ -1,42 +1,30 @@
-﻿@model DatosLlamadaViewModel;
+﻿@using Microsoft.JSInterop;
+
+@model GestorRegRespuestaOperador;
 @{
-   
-    
+    DatosLlamadaViewModel Datos = Model.buscarDatosLlamadaActual();
+
 }
 
 <div class="container">
     <div class="header col-12">
         <div>
-            <a class="title" style="font-size: 18px;"> Nombre Cliente: @Model.nombreCliente.ToString()
+            <a class="title">
+                Nombre Cliente: @Datos.nombreCliente.ToString()
             </a>
         </div>
         <span class="image"></span>
     </div>
     <dl class="post-info col-11">
         <div class="cr">
-            <dt class="dt" style="font-size: 14px;">Categoria Llamada: @Model.CategoriaAMostrar.nombreCategoria.ToString()</dt>
-            <dt class="dt" style="font-size: 14px;">Opcion Seleccionada: @Model.CategoriaAMostrar.OpcionLlamada.Nombre.ToString()</dt>
-            <dt class="dt" style="font-size: 14px;">Sub-Opcion Seleccionada: @Model.CategoriaAMostrar.OpcionLlamada.subOpcionesLlamada[0].nombre.ToString()</dt>
-        </div>
-        <div class="cd">
-            Validaciones:            
-            <select id="miSelect" onchange="habilitarTextarea()">
-                <option value="">Selecciona la validacion</option>
-                @foreach (string opcion in Model.Validaciones)
-                {
-                    <option value="@opcion">@opcion</option>
-                }
-            </select>
-
-        </div>
-            <div class="mt-3">
-                <p class="col-8" style="align-content:center;"> Descripcion de respuesta:</p><textarea id="miTextarea" disabled></textarea>
-            </div>
+            <dt class="dt"> <b>Categoria Llamada: </b>  @Datos.CategoriaAMostrar.nombreCategoria.ToString()</dt>
+            <dt class="dt"><b> Opcion Seleccionada: </b> @Datos.CategoriaAMostrar.OpcionLlamada.Nombre.ToString()</dt>
+            <dt class="dt"><b> Sub-Opcion Seleccionada: </b> @Datos.CategoriaAMostrar.OpcionLlamada.subOpcionesLlamada[0].nombre.ToString()</dt>
             
-        
+        </div>
     </dl>
 </div>
 
 @section Scripts{
-    
+
 }
