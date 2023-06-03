@@ -37,13 +37,17 @@ namespace PPAI_IVR.Models
 
         public DatosLlamadaViewModel buscarDatosLlamadaActual()
         {
-            DatosLlamadaViewModel lista = new DatosLlamadaViewModel();          
+            DatosLlamadaViewModel lista = new DatosLlamadaViewModel();             
             string nombreClienteLlamada = LlamadaEnCurso.obtenerNombreClienteLlamada();
-            lista.Add(nombreClienteLlamada);
-            List<List<string>> descripciones = CategoriaSeleccionada.obtenerDescripcionCategoriaYOpcion();
-            lista.Add(descripciones);
-            List<string> validaciones = CategoriaSeleccionada.obtenerValidaciones();
-            lista.Add(validaciones);
+            lista.nombreCliente = nombreClienteLlamada;
+            DescripcionCategoriaViewModel descripciones = CategoriaSeleccionada.obtenerDescripcionCategoriaYOpcion();
+            lista.CategoriaAMostrar = descripciones;
+            ValidacionesViewModel validaciones = CategoriaSeleccionada.ObtenerValidaciones(CategoriaSeleccionada.OpcionLlamada.validacionesRequeridas);
+            lista.Validaciones = new List<string>();
+            foreach (var val in validaciones.validaciones)
+            {
+                lista.Validaciones.Add(val);
+            }            
 
             return lista;
         }

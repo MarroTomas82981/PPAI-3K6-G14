@@ -1,8 +1,14 @@
-﻿namespace PPAI_IVR.Models
+﻿using PPAI_IVR.Clases;
+
+namespace PPAI_IVR.Models
 {
-    public class DatosLlamadaViewModel : List<object>
+    public class DatosLlamadaViewModel 
     {
-        public List<object> DatosLlamadaActual { get; set; }
+        public string nombreCliente {  get; set; }
+
+        public DescripcionCategoriaViewModel CategoriaAMostrar { get; set; }
+
+        public List<string> Validaciones { get; set; }
         
     }
 }

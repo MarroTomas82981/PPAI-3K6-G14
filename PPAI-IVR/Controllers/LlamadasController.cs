@@ -93,9 +93,11 @@ namespace PPAI_IVR.Controllers
                 }
             };
 
-            List<object> paraMostrar = gestor.buscarDatosLlamadaActual();
+            DatosLlamadaViewModel paraMostrar = gestor.buscarDatosLlamadaActual();
             return View(paraMostrar);
         }
+
+
 
 
     }
