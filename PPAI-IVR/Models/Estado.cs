@@ -32,7 +32,7 @@
     };
 
 
-        public Estado esEnCurso()
+        public Estado getEnCurso()
         {
             Estado estadoEnCurso = null;
 

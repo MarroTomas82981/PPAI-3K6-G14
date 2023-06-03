@@ -8,7 +8,7 @@ namespace PPAI_IVR.Models
 
         public DescripcionCategoriaViewModel CategoriaAMostrar { get; set; }
 
-        public List<string> Validaciones { get; set; }
+        public List<Validacion> Validaciones { get; set; }
         
     }
 }

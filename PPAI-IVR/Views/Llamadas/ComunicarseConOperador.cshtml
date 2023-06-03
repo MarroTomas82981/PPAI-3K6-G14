@@ -1,33 +1,88 @@
 ﻿@using PPAI_IVR.Clases;
 @using PPAI_IVR.Models.Clases;
+@using Microsoft.JSInterop;
 
 @model GestorRegRespuestaOperador;
 
 @{
     ViewData["Title"] = "Comunicarse con el operador";
 
-    GestorRegRespuestaOperador gestor = new GestorRegRespuestaOperador
+    GestorRegRespuestaOperador gestor = new GestorRegRespuestaOperador();
+    OpcionValidacion validacionCorrectaH = new OpcionValidacion
             {
-                LlamadaEnCurso = new Llamada
-                {
-                    Cliente = new Cliente
-                    {
-                        Id = 1,
-                        NombreCompleto = "Antonio Lopez",
-                        InformacionDelCliente = new List<InformacionCliente>
-                        {
-                            new InformacionCliente
-                            {
-                                datoAValidar = "4 Hijos",
-                                Id = 2,
-                            }
-                        }
-                    },
-                    OpcionLlamada = new OpcionLlamada
-                    {
+                Id = 3,
+                descripcion = "4 hijos",
+                correcta = false
+            };
+    OpcionValidacion validacionCorrectaF = new OpcionValidacion
+            {
+                Id = 6,
+                descripcion = "2000-12-22 00:00:00",
+                correcta = true
+            };
+    OpcionLlamada OpcionLlamadaSeleccionada =  new OpcionLlamada
+            {
+                Nombre = "Solicitar cancelación de la tarjeta de crédito",
+                NroOrden = 1,
+                subOpcionesLlamada = new List<SubOpcionLlamada>{
 
-                    },
-                    CambiosDeEstados = new List<CambioEstado>
+                            new SubOpcionLlamada{
+                                Id = 1,
+                                nombre = "Comunicarse con un Operador",
+                                nroOrden = 2
+                            }
+                        },
+                validacionesRequeridas = new List<Validacion>
+                        {
+                            new Validacion
+                            {
+                                Id = 1,
+                                NroOrden = 1,
+                                audioMensajeValidacion = "¿ cual es la cantidad de hijos ?",
+                                opcionValidacions = new List<OpcionValidacion>
+                                {
+                                    validacionCorrectaH,
+                                    new OpcionValidacion
+                                    {
+                                        Id = 2,
+                                        descripcion = "5 hijos",
+                                        correcta = false
+                                    },new OpcionValidacion
+                                    {
+                                        Id = 3,
+                                        descripcion = "2 hijos",
+                                        correcta = false
+                                    }
+                                },
+                                Nombre = "Primera Opcion"
+                            },
+                            new Validacion
+                            {
+                                NroOrden= 2,
+                                Id = 2,
+                                audioMensajeValidacion = "¿ Cual es su fecha de nacimiento?",
+                                opcionValidacions = new List<OpcionValidacion>
+                                {
+                                    validacionCorrectaF,
+                                    new OpcionValidacion
+                                    {
+                                        Id = 4,
+                                        descripcion = "2000-10-22 00:00:00",
+                                        correcta = false
+                                    },new OpcionValidacion
+                                    {
+                                        Id = 5,
+                                        descripcion = "2000-05-17 00:00:00",
+                                        correcta = false
+                                    }
+                                },
+                                Nombre = "Segunda Opcion"
+                            },
+
+                        }
+            };
+
+    List<CambioEstado> cambioEstados = new List<CambioEstado>
                     {
                         new CambioEstado
                         {
@@ -38,70 +93,88 @@
                                 Id = 1
                             }
                         }
-                    }
-                },
-                CategoriaSeleccionada = new CategoriaLlamada
-                {
-                    Id = 1,
-                    nombre = "Robo",
-                    nroOrden = 5,
-                    OpcionLlamada = new OpcionLlamada
+                    };
+    Llamada llamadaEnCurso = new Llamada
+    {
+        Cliente = new Cliente
+        {
+            Id = 1,
+            NombreCompleto = "Antonio Lopez",
+            InformacionesDelCliente = new List<InformacionCliente>
                     {
-                        Nombre = "Solicitar cancelación de la tarjeta de crédito",
-                        NroOrden = 1,
-                        subOpcionesLlamada = new List<SubOpcionLlamada>{
+                        new InformacionCliente  {
+                        datoAValidar = "Cantidad De Hijos",
+                        opcioneCorrecta =validacionCorrectaH,
+                        Id = 2,
 
-                            new SubOpcionLlamada{
-                                Id = 1,
-                                nombre = "Comunicarse con un Operador",
-                                nroOrden = 2
-                            }
-                        },
-                        validacionesRequeridas = new List<Validacion>
-                        {
-                            new Validacion
-                            {
-                                Id = 1,
-                                NroOrden = 1,
-                                audioMensajeValidacion = " 2 Hijos",
-                                Nombre = "Primera Opcion"
-                            },
-                            new Validacion
-                            {
-                                NroOrden= 2,
-                                Id = 2,
-                                audioMensajeValidacion = " 5 Hijos",
-                                Nombre = "Segunda Opcion"
-                            },
-                            new Validacion
-                            {
-                                NroOrden = 3,
-                                Id = 3,
-                                audioMensajeValidacion = " 4 Hijos",
-                                Nombre = "Tercera Opcion"
-                            }
-                        }
                     }
-                }
+            }
+         
+        }
+    };
+    CategoriaLlamada categoriaSeleccionada = new CategoriaLlamada
+            {
+                Id = 1,
+                nombre = "Robo",
+                nroOrden = 5,
+                OpcionLlamada = OpcionLlamadaSeleccionada,
+                
             };
-}
+    gestor.tomarRespuestaOperador(llamadaEnCurso, categoriaSeleccionada);
+};
+
+
+
 
 <h1>El cliente se comunico contigo</h1>
 
 <form>
-    <partial name="_DatosLlamada" model="@gestor.buscarDatosLlamadaActual()" />
+    <partial name="_DatosLlamada" model="@gestor" />
 
-    <button type="submit" class="btn btn-primary">Enviar</button>
-    <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+    <button type="button" class="btn btn-primary" id="des" onclick="mostrarVistaParcial(); desactivarBotones()">Confirmar Operación</button>
+
+    <div id="vistaParcialContainer" style="display: none;">
+        <partial name="LlamadaCU28" model="@gestor" />
+    </div>
+    <div>
+        <dt class="dt">
+            <b> Validaciones: </b>
+
+
+
+            <select id="miselect" onchange="habilitartextarea(); obtenervalorseleccionado();">
+                <option value="hola">selecciona la validación</option>
+
+                @foreach (string opcion in gestor.)
+                {
+                    <option value="@opcion">@opcion</option>
+                }
+            </select>
+
+
+
+        </dt>
+
+        <dt class="dt">
+            <div class="mt-3">
+                <p class="col-8" style="align-content:center;"> <b> Descripcion de respuesta: </b> </p><textarea id="miTextarea" disabled></textarea>
+            </div>
+        </dt>
+    </div>
+
+
+    <a class="btn btn-secondary" asp-action="Index" id="des2">Cancelar</a>
+    <a class="btn btn-danger" id="des3" asp-action="Index">Llamada Colgada</a>
 </form>
 
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @*<script src="_framework/blazor.server.js"></script>*@
     <script>
-        function habilitarTextarea() {
-            var select = document.getElementById("miSelect");
+        function habilitartextarea() {
+            var select = document.getElementById("seleccionador-listado-opcionesValidacion");
             var textarea = document.getElementById("miTextarea");
 
             if (select.value !== "") {
@@ -110,5 +183,32 @@
                 textarea.disabled = true;
             }
         }
+        function mostrarVistaParcial() {
+            var vistaParcialContainer = document.getElementById("vistaParcialContainer");
+            vistaParcialContainer.style.display = "block";
+        }
+        function desactivarBotones() {
+            var botonConfirmar = document.getElementById("des");
+            var botonCancelar = document.getElementById("des2");
+            var botonLlamadaColgada = document.getElementById("des3");
+
+            botonConfirmar.style.display = "none";
+            botonCancelar.style.display = "none";
+            botonLlamadaColgada.style.display = "none";
+        }
     </script>
+    <script>
+        
+
+        const opcionesValidacionViewModel = {
+            opciones: [
+                { nombre: '4 hijos' },
+                { nombre: '3 hijos' }
+            ]
+        };
+
+        ko.applyBindings(opcionesValidacionViewModel, document.getElementById('seleccionador-listado-opcionesValidacion'));
+
+    </script>
+
 }

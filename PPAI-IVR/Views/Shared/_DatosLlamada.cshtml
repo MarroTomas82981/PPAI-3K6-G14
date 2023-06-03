@@ -1,19 +1,23 @@
-﻿@model DatosLlamadaViewModel;
+﻿@using Microsoft.JSInterop;
+
+@model GestorRegRespuestaOperador;
 @{
-   
-    
+    DatosLlamadaViewModel Datos = Model.buscarDatosLlamadaActual();
+
 }
 
 <div class="container">
     <div class="header col-12">
         <div>
-            <a class="title" style="font-size: 18px;"> Nombre Cliente: @Model.nombreCliente.ToString()
+            <a class="title">
+                Nombre Cliente: @Datos.nombreCliente.ToString()
             </a>
         </div>
     </div>
     
     <dl class="post-info col-11">
         <div class="cr">
+<<<<<<< HEAD
             <dt class="dt" ><b> Categoria Llamada: </b> @Model.CategoriaAMostrar.nombreCategoria.ToString()</dt>
             <dt class="dt" ><b> Opcion Seleccionada: </b> @Model.CategoriaAMostrar.OpcionLlamada.Nombre.ToString()</dt>
             <dt class="dt" ><b> Sub-Opcion Seleccionada: </b> @Model.CategoriaAMostrar.OpcionLlamada.subOpcionesLlamada[0].nombre.ToString()</dt>
@@ -36,8 +40,16 @@
             </dt>
         </div>
     </dl
+=======
+            <dt class="dt"> <b>Categoria Llamada: </b>  @Datos.CategoriaAMostrar.nombreCategoria.ToString()</dt>
+            <dt class="dt"><b> Opcion Seleccionada: </b> @Datos.CategoriaAMostrar.OpcionLlamada.Nombre.ToString()</dt>
+            <dt class="dt"><b> Sub-Opcion Seleccionada: </b> @Datos.CategoriaAMostrar.OpcionLlamada.subOpcionesLlamada[0].nombre.ToString()</dt>
+            
+        </div>
+    </dl>
+>>>>>>> 4db40c1b60bef897b85fd30733329f8248215693
 </div>
 
 @section Scripts{
-    
+
 }

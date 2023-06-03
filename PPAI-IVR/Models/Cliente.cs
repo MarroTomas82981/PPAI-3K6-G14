@@ -15,7 +15,7 @@ namespace PPAI_IVR.Models.Clases
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [Display(Name = "DNI")]
         public int Dni { get; set; }
-        public List<InformacionCliente> InformacionDelCliente { get; set; }
+        public List<InformacionCliente> InformacionesDelCliente { get; set; }
         
 
 
@@ -28,11 +28,17 @@ namespace PPAI_IVR.Models.Clases
         {
             return NombreCompleto;
         }
-        public bool  esInfoCorrecta(string respuestasAValidar)//Datos que pasa como parametros
+        public bool  esInfoCorrecta(OpcionValidacion opcionAValidar)//Datos que pasa como parametros
         {
-            
-           
-            return true;
+            foreach (var opcion in InformacionesDelCliente)
+            {
+                if (opcionAValidar == opcion.opcioneCorrecta)
+                {
+                    return true;
+                }
+
+            }
+            return false;
         }
     }
 }

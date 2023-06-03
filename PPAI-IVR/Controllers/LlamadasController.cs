@@ -16,6 +16,10 @@ namespace PPAI_IVR.Controllers
         public async Task<IActionResult> RegistrarLlamada()
         {
             return View();
+        } 
+        public async Task<IActionResult> LlamadaCU28()
+        {
+            return View();
         }
 
 
@@ -35,13 +39,12 @@ namespace PPAI_IVR.Controllers
                     {
                         Id = 1,
                         NombreCompleto = "Antonio Lopez",
-                        InformacionDelCliente = new List<InformacionCliente>
+                        InformacionDelCliente = new InformacionCliente
                         {
-                            new InformacionCliente
-                            {
+                            
                                 datoAValidar = "4 Hijos",
                                 Id = 2,
-                            }
+                            
                         }                  
                         
                     },
@@ -97,8 +100,7 @@ namespace PPAI_IVR.Controllers
             return View(paraMostrar);
         }
 
-
-
+        
 
     }
 }
