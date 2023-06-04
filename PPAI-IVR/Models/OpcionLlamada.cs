@@ -14,6 +14,8 @@ namespace PPAI_IVR.Clases
         public int CategoriaLlamadaId { get; set; }
         public int LlamadaId { get; set; }
 
+        public string getNombre () { return Nombre; }
+
 
 
         public string getAudiomensajeSubOpciones()
@@ -24,7 +26,7 @@ namespace PPAI_IVR.Clases
         {
             OpcionLlamadaViewModel opcion = new OpcionLlamadaViewModel();
             opcion.SubOpcionLlamada = new SubOpcionLlamada();
-            opcion.nombreOpcion = Nombre;
+            opcion.nombreOpcion = getNombre();
             opcion.SubOpcionLlamada.nombre = subOpcionesLlamada[0].getNombre();
             return opcion;
         }

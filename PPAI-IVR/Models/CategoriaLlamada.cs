@@ -35,7 +35,7 @@ namespace PPAI_IVR.Clases
         public ValidacionesViewModel ObtenerValidaciones(List<Validacion> validaciones)
         {
             ValidacionesViewModel validacion = new ValidacionesViewModel();
-            validacion.validaciones = OpcionLlamada.getValidaciones(validaciones);
+            validacion.audioMensajesValidaciones = OpcionLlamada.getValidaciones(validaciones);
             return validacion;
         }
         public string getNombre()

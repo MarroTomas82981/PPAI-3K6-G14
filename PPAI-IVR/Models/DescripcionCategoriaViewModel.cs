@@ -2,7 +2,7 @@
 {
     public class DescripcionCategoriaViewModel
     {
-        public CategoriaLlamada Categoria {  get; set; }
+        public string nombreCategoria {  get; set; }
 
         public OpcionLlamada OpcionLlamada { get; set; }
     }
